@@ -1,0 +1,38 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="128" height="128" rx="24" fill="#2563EB"/>
+  
+  <!-- 标签页组 -->
+  <g transform="translate(20, 28)">
+    <!-- 底层标签页 -->
+    <rect x="0" y="32" width="60" height="36" rx="6" 
+          fill="white" fill-opacity="0.3"/>
+    
+    <!-- 中层标签页 -->
+    <rect x="8" y="16" width="60" height="36" rx="6" 
+          fill="white" fill-opacity="0.6"/>
+    
+    <!-- 顶层标签页 -->
+    <rect x="16" y="0" width="60" height="36" rx="6" 
+          fill="white" fill-opacity="1"/>
+  </g>
+
+  <!-- 排序箭头 -->
+  <g transform="translate(96, 48)">
+    <!-- 箭头描边 -->
+    <g stroke="#1E40AF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+      <!-- 向上箭头描边 -->
+      <path d="M0 24L0 0M0 0L-12 12M0 0L12 12"/>
+      <!-- 向下箭头描边 -->
+      <path d="M0 24L0 48M0 48L-12 36M0 48L12 36"/>
+    </g>
+    
+    <!-- 箭头主体 -->
+    <g stroke="#93C5FD" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+      <!-- 向上箭头 -->
+      <path d="M0 24L0 0M0 0L-12 12M0 0L12 12"/>
+      <!-- 向下箭头 -->
+      <path d="M0 24L0 48M0 48L-12 36M0 48L12 36"/>
+    </g>
+  </g>
+</svg> 
