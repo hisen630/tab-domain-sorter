@@ -5,10 +5,12 @@
   "version": "1.0",
   "permissions": [
     "tabs",
-    "tabGroups"
+    "tabGroups",
+    "notifications"
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "action": {
     "default_icon": {

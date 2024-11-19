@@ -1,6 +1,25 @@
+// Service Worker 生命周期管理
+chrome.runtime.onInstalled.addListener(() => {
+  console.log('扩展已安装');
+});
+
+// 保持 Service Worker 活跃
+chrome.runtime.onStartup.addListener(() => {
+  console.log('浏览器启动');
+});
+
+// 错误处理
+self.addEventListener('error', (error) => {
+  console.error('Service Worker 错误:', error);
+});
+
 // 点击扩展图标时直接执行排序
 chrome.action.onClicked.addListener(async () => {
   try {
+    // 开始排序时显示进行中状态
+    await chrome.action.setBadgeText({ text: '...' });
+    await chrome.action.setBadgeBackgroundColor({ color: '#FFB800' });
+
     // 获取当前窗口的所有标签页和群组
     const tabs = await chrome.tabs.query({ currentWindow: true });
     const groups = await chrome.tabGroups.query({ windowId: chrome.windows.WINDOW_ID_CURRENT });
@@ -169,7 +188,25 @@ chrome.action.onClicked.addListener(async () => {
         console.log(`排序非域名群组 ${groupId} 失败:`, e);
       }
     }
+
+    // 排序成功后显示成功状态
+    await chrome.action.setBadgeText({ text: '✓' });
+    await chrome.action.setBadgeBackgroundColor({ color: '#4CAF50' });
+    
+    // 2秒后清除badge
+    setTimeout(async () => {
+      await chrome.action.setBadgeText({ text: '' });
+    }, 2000);
+
   } catch (e) {
     console.error('发生错误:', e);
+    // 发生错误时显示错误状态
+    await chrome.action.setBadgeText({ text: '!' });
+    await chrome.action.setBadgeBackgroundColor({ color: '#F44336' });
+    
+    // 2秒后清除badge
+    setTimeout(async () => {
+      await chrome.action.setBadgeText({ text: '' });
+    }, 2000);
   }
 }); 
